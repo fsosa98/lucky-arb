@@ -211,16 +211,8 @@ contract LuckyArb is ERC20, VRFConsumerBaseV2Plus {
         return s_lotteryStartAt;
     }
 
-    function getMinDepositAmount() external pure returns (uint256) {
-        return MIN_DEPOSIT_AMOUNT;
-    }
-
     function getMaxDepositAmount() external view returns (uint256) {
         return s_maxDepositAmount;
-    }
-
-    function getMinLuckyNumber() external pure returns (uint256) {
-        return MIN_LUCKY_NUMBER;
     }
 
     function getMaxLuckyNumber() external view returns (uint256) {

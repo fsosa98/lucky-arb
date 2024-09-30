@@ -214,7 +214,7 @@ contract DSCEngineTest is Test, CodeConstants {
 
     // Requesting a Lucky Number and Claiming Rewards Tests
     function testPlayerCannotClaimRewardIfDepositAmountTooLow() public startLottery skipFork {
-        uint256 minDepositAmount = luckyArb.getMinDepositAmount();
+        uint256 minDepositAmount = luckyArb.MIN_DEPOSIT_AMOUNT();
         vm.startPrank(players[0]);
         arbToken.approve(address(luckyArb), minDepositAmount - 1);
         luckyArb.depositTokens(minDepositAmount - 1);
