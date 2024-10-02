@@ -39,6 +39,10 @@ ifeq ($(findstring --network sepolia,$(ARGS)),--network sepolia)
 	NETWORK_ARGS := --rpc-url $(ARB_SEPOLIA_RPC_URL) --account $(ACCOUNT_NAME) --broadcast --verify --etherscan-api-key $(ETHERSCAN_API_KEY) -vvvv
 endif
 
+ifeq ($(findstring --network mainnet,$(ARGS)),--network mainnet)
+	NETWORK_ARGS := --rpc-url $(ARB_MAINNET_RPC_URL) --account $(ACCOUNT_NAME) --broadcast --verify --etherscan-api-key $(ETHERSCAN_API_KEY) -vvvv
+endif
+
 deploy:
 	@forge script script/DeployLuckyArb.s.sol:DeployLuckyArb $(NETWORK_ARGS)
 

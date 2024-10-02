@@ -43,6 +43,7 @@ contract HelperConfig is Script, CodeConstants {
 
     constructor() {
         networkConfigs[ARB_SEPOLIA_CHAIN_ID] = getArbSepoliaConfig();
+        networkConfigs[ARB_MAINNET_CHAIN_ID] = getArbMainnetConfig();
         networkConfigs[ETH_SEPOLIA_CHAIN_ID] = getEthSepoliaConfig();
     }
 
@@ -88,6 +89,20 @@ contract HelperConfig is Script, CodeConstants {
             subscriptionId: 0,
             callbackGasLimit: 500000,
             linkToken: 0x779877A7B0D9E8603169DdbD7836e478b4624789,
+            account: address(0) // Account address
+        });
+    }
+
+    function getArbMainnetConfig() public pure returns (NetworkConfig memory) {
+        return NetworkConfig({
+            maxDepositAmount: MAX_DEPOSIT_AMOUNT,
+            maxLuckyNumber: MAX_LUCKY_NUMBER,
+            arbAdress: 0x912CE59144191C1204E64559FE8253a0e49E6548,
+            vrfCoordinator: 0x3C0Ca683b403E37668AE3DC4FB62F4B29B6f7a3e,
+            keyHash: 0x9e9e46732b32662b9adc6f3abdf6c5e926a666d174a4d6b8e39c4cca76a38897,
+            subscriptionId: 76823505387732250489283080004648247572936852730098002888689482944000130906146,
+            callbackGasLimit: 500000,
+            linkToken: 0xf97f4df75117a78c1A5a0DBb814Af92458539FB4,
             account: address(0) // Account address
         });
     }

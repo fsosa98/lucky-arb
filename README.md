@@ -11,6 +11,7 @@
   - [Deploy](#deploy)
   - [Testing](#testing)
     - [Test Coverage](#test-coverage)
+  - [Deployment to a testnet or mainnet](#deployment-to-a-testnet-or-mainnet)
 
 ## Overview
 
@@ -73,6 +74,8 @@ This will default to your local node. You need to have it running in another ter
 make deploy
 ```
 
+> Deploy to Other Network - [See below](#deployment-to-a-testnet-or-mainnet)
+
 ### Testing
 
 To run the tests:
@@ -86,3 +89,29 @@ forge test
 ```
 forge coverage
 ```
+
+
+### Deployment to a testnet or mainnet
+
+1. Set up environment variables
+
+You'll want to set your `ARB_SEPOLIA_RPC_URL` (or `ETH_SEPOLIA_RPC_URL`) and `ACCOUNT_NAME` as environment variables. You can add them to a `.env` file, similar to what’s shown in `.env.example`.
+
+- `ACCOUNT_NAME`: The account name you imported using the `cast wallet import ACCOUNT_NAME --interactive` command
+- `ARB_SEPOLIA_RPC_URL`: This is the URL of the Arbitrum Sepolia testnet node you're working with. You can set one up for free with [Alchemy](https://www.alchemy.com)
+
+Optionally, add your `ETHERSCAN_API_KEY` if you want to verify your contract on [Etherscan](https://etherscan.io/).
+
+2. Deploy
+
+- Testnet 
+```
+make deploy ARGS="--network sepolia"
+```
+
+- Mainnet 
+```
+make deploy ARGS="--network mainnet"
+```
+
+This will set up a Chainlink VRF Subscription for you. If you already have one, update it in the `scripts/HelperConfig.s.sol` file. It will also automatically add your contract as a consumer.
